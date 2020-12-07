@@ -252,8 +252,7 @@
 
 <h2 id="2-RecycleView的相关框架"><a href="#2-RecycleView的相关框架" class="headerlink" title="2.RecycleView的相关框架"></a>2.RecycleView的相关框架</h2><h3 id="BRVAH：强大而灵活的RecyclerView-Adapter"><a href="#BRVAH：强大而灵活的RecyclerView-Adapter" class="headerlink" title="BRVAH：强大而灵活的RecyclerView Adapter"></a>BRVAH：强大而灵活的RecyclerView Adapter</h3><p>github地址：</p>
 <p><a target="_blank" rel="noopener" href="https://github.com/CymChad/BaseRecyclerViewAdapterHelper">https://github.com/CymChad/BaseRecyclerViewAdapterHelper</a></p>
-<h2 id="3-DiffUtil"><a href="#3-DiffUtil" class="headerlink" title="3.DiffUtil"></a>3.DiffUtil</h2><p>（参考学习的博客：<a target="_blank" rel="noopener" href="https://blog.csdn.net/zxt0601/article/details/52562770">https://blog.csdn.net/zxt0601/article/details/52562770</a>  <a target="_blank" rel="noopener" href="https://zhangxutong.blog.csdn.net/">张旭童</a> RecyclerView的好伴侣：详解DiffUtil）</p>
-<p>更高效，更顺畅的更新RecycleView数据。</p>
+<h2 id="3-DiffUtil"><a href="#3-DiffUtil" class="headerlink" title="3.DiffUtil"></a>3.DiffUtil</h2><p>更高效，更顺畅的更新RecycleView数据。</p>
 <p>直接使用 notifyDataSetChanged 更新数据的缺陷：</p>
 <ul>
 <li>没有更新动画</li>
@@ -281,13 +280,16 @@
 <p>dispatchUpdatesTo 方法还会将这个CallBack封装为 BatchingListUpdateCallback（同样实现了 ListUpdateCallback 接口） 最后调用 batchingCallback.dispatchLastEvent() 触发Adapter的更新。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs java">	<span class="hljs-comment">/**</span><br><span class="hljs-comment">    * BatchingListUpdateCallback holds onto the last event to see if it can be merged with the</span><br><span class="hljs-comment">    * next one. When stream of events finish, you should call this method to dispatch the last</span><br><span class="hljs-comment">    * event.</span><br><span class="hljs-comment">    */</span>	<br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">dispatchLastEvent</span><span class="hljs-params">()</span> </span>&#123;<br>       <span class="hljs-keyword">if</span> (mLastEventType == TYPE_NONE) &#123;<br>           <span class="hljs-keyword">return</span>;<br>       &#125;<br>       <span class="hljs-keyword">switch</span> (mLastEventType) &#123;<br>           <span class="hljs-keyword">case</span> TYPE_ADD:<br>               mWrapped.onInserted(mLastEventPosition, mLastEventCount);<br>               <span class="hljs-keyword">break</span>;<br>           <span class="hljs-keyword">case</span> TYPE_REMOVE:<br>               mWrapped.onRemoved(mLastEventPosition, mLastEventCount);<br>               <span class="hljs-keyword">break</span>;<br>           <span class="hljs-keyword">case</span> TYPE_CHANGE:<br>               mWrapped.onChanged(mLastEventPosition, mLastEventCount, mLastEventPayload);<br>               <span class="hljs-keyword">break</span>;<br>       &#125;<br>       mLastEventPayload = <span class="hljs-keyword">null</span>;<br>       mLastEventType = TYPE_NONE;<br>   &#125;<br><br><span class="hljs-meta">@Override</span><br>   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onMoved</span><span class="hljs-params">(<span class="hljs-keyword">int</span> fromPosition, <span class="hljs-keyword">int</span> toPosition)</span> </span>&#123;<br>       dispatchLastEvent(); <span class="hljs-comment">// moves are not merged</span><br>       mWrapped.onMoved(fromPosition, toPosition);<br>   &#125;<br></code></pre></td></tr></table></figure>
 
+<blockquote>
+<p>张旭童 RecyclerView的好伴侣：详解DiffUtil</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/zxt0601/article/details/52562770">https://blog.csdn.net/zxt0601/article/details/52562770</a> </p>
+</blockquote>
 <h2 id="4-RecycleView-和ListView、GridView的区别"><a href="#4-RecycleView-和ListView、GridView的区别" class="headerlink" title="4.RecycleView 和ListView、GridView的区别"></a>4.RecycleView 和ListView、GridView的区别</h2><ul>
 <li>低耦合性：ListView，GridView只能实现单一的布局方式，RecyclerView可通过setLayoutManager实现ListView的垂直布局，GridView的水平布局，以及瀑布流布局，实现了控件和布局方式的解耦。</li>
 <li>高效：ListView，GridView在创建ItemView时，为了提高执行效率官方推荐使用视图缓存ViewHolder，RecyclerView直接将ViewHolder相关方法封好了。ListView，GridView增删子项调用notifyDataSetChanged后，会将所有ItemView重新生成一遍。<br>RecyclerView多了notifyItemInserted,notifyItemRemoved,notifyItemMoved,notifyItemChanged等可以更新单项ItemView的方法，效率大大提高。</li>
 <li>丰富动画效果：ListView，GridView想实现ItemView的拖拽排序等操作非常复杂，所有的代码均需由程序员实现，还要考虑与原有控件，界面手势处理兼容性，实现难度大，执行效率不高。RecyclerView的扩展包提了ItemTouchHelper类，可以轻松的实现ItemView之间的拖拽排序等动画效果。</li>
 </ul>
-<h4 id="关于RecycleView的缓存与回收机制"><a href="#关于RecycleView的缓存与回收机制" class="headerlink" title="关于RecycleView的缓存与回收机制"></a>关于RecycleView的缓存与回收机制</h4><p>（学习参考 <a target="_blank" rel="noopener" href="https://www.jianshu.com/p/3e9aa4bdaefd">https://www.jianshu.com/p/3e9aa4bdaefd</a> <a target="_blank" rel="noopener" href="https://www.jianshu.com/u/5fd2523645da">肖邦kaka</a> 让你彻底掌握RecyclerView的缓存机制）</p>
-<p>首先是ListView的缓存：</p>
+<h4 id="关于RecycleView的缓存与回收机制"><a href="#关于RecycleView的缓存与回收机制" class="headerlink" title="关于RecycleView的缓存与回收机制"></a>关于RecycleView的缓存与回收机制</h4><p>首先是ListView的缓存：</p>
 <ul>
 <li>Active View ：是缓存在屏幕内的ItemView，当列表数据发生变化时，屏幕内的数据可以直接拿来复用，无须进行数据绑定。</li>
 <li>Scrap view：缓存屏幕外的ItemView，这里所有的缓存的数据都是”脏的”，也就是数据需要重新绑定，也就是说屏幕外的所有数据在进入屏幕的时候都要走一遍getView（）方法。</li>
@@ -299,6 +301,10 @@
 <li><strong>ViewCacheExtension</strong>：google留给开发者自己来自定义缓存。</li>
 <li><strong>RecycledViewPool</strong>：默认的缓存数量是5个，RecycledViewPool缓存的ViewHolder是全新的，取出来的时候需要走onBindViewHolder 方法。</li>
 </ul>
+<blockquote>
+<p>肖邦kaka 让你彻底掌握RecyclerView的缓存机制</p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/3e9aa4bdaefd">https://www.jianshu.com/p/3e9aa4bdaefd</a> </p>
+</blockquote>
 
             </div>
             <hr>
@@ -328,6 +334,12 @@
                 <div class="post-prevnext row">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2020/12/07/Android5.0%E4%B9%8B%20Notification/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Android5.0之 Notification</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
