@@ -157,7 +157,7 @@
 </nav>
 
     <div class="banner intro-2" id="background" parallax=true
-         style="background: url('/img/default.png') no-repeat center center;
+         style="background: url('https://tva2.sinaimg.cn/large/007ghrgxgy1glruocuwu2j31h40qub2a.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -177,7 +177,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.3k 字
+      4.4k 字
     </span>
   
 
@@ -187,7 +187,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      26
+      50
        分钟
     </span>
   
@@ -261,7 +261,7 @@
 <li>Callable中的call方法可以抛出异常。</li>
 <li>运行Callable可以拿到一个Future对象，Future对象表示异步计算的结果，他提供了检查计算是否完成的方法。可以在一个线程中拿到目标Callable的Future对象，从而对目标线程进行监视。但调用Future的get方法当前线程就会阻塞，直到call方法返回结果。</li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestCallable</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Callable</span>&lt;<span class="hljs-title">String</span>&gt; </span>&#123;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">call</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> Exception </span>&#123;<br>        Thread.sleep(<span class="hljs-number">2000</span>);<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;run : TestCallable&quot;</span>;<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">//调用</span><br>ExecutorService executorService = Executors.newFixedThreadPool(<span class="hljs-number">1</span>);<br>        Future&lt;String&gt; future = executorService.submit(<span class="hljs-keyword">new</span> TestCallable());<br>        <span class="hljs-keyword">new</span> Thread(<span class="hljs-keyword">new</span> Runnable() &#123;<br>            <span class="hljs-meta">@Override</span><br>            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>&#123;<br>                <span class="hljs-keyword">try</span> &#123;<br>                    Log.d(<span class="hljs-string">&quot;TAG&quot;</span>, <span class="hljs-string">&quot;run: future.get before&quot;</span>);<br>                    Log.d(<span class="hljs-string">&quot;TAG&quot;</span>, <span class="hljs-string">&quot;run: &quot;</span> + future.get());<br>                    Log.d(<span class="hljs-string">&quot;TAG&quot;</span>, <span class="hljs-string">&quot;run: future.get after&quot;</span>);<br>                &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;<br>                    e.printStackTrace();<br>                &#125;<br>            &#125;<br>        &#125;).start();<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestCallable</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Callable</span>&lt;<span class="hljs-title">String</span>&gt; </span>&#123;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">call</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> Exception </span>&#123;<br>        Thread.sleep(<span class="hljs-number">2000</span>);<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;run : TestCallable&quot;</span>;<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">//调用</span><br>ExecutorService executorService = Executors.newSingleThreadExecutor();<br>        Future&lt;String&gt; future = executorService.submit(<span class="hljs-keyword">new</span> TestCallable());<br>        <span class="hljs-keyword">new</span> Thread(<span class="hljs-keyword">new</span> Runnable() &#123;<br>            <span class="hljs-meta">@Override</span><br>            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>&#123;<br>                <span class="hljs-keyword">try</span> &#123;<br>                    Log.d(<span class="hljs-string">&quot;TAG&quot;</span>, <span class="hljs-string">&quot;run: future.get before&quot;</span>);<br>                    Log.d(<span class="hljs-string">&quot;TAG&quot;</span>, <span class="hljs-string">&quot;run: &quot;</span> + future.get());<br>                    Log.d(<span class="hljs-string">&quot;TAG&quot;</span>, <span class="hljs-string">&quot;run: future.get after&quot;</span>);<br>                &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;<br>                    e.printStackTrace();<br>                &#125;<br>            &#125;<br>        &#125;).start();<br></code></pre></td></tr></table></figure>
 
 </li>
 </ol>
@@ -310,6 +310,92 @@
 <h5 id="volatile"><a href="#volatile" class="headerlink" title="volatile"></a>volatile</h5><p>volatile关键字为实例域的同步访问提供了免锁机制。如果声明一个域为volatile，那么编译器和虚拟机就知道该域可能别另一个线程并发更新的。</p>
 <p>该关键字保证了可见性与有序性，不保证原子性。</p>
 <p>被修饰的变量的更新值，另一个线程立即可见；volatile能禁止指令重排序，在进行指令优化时，在volatile变量之前的语句不能在volatile变量后面执行，同样，在volatile变量之后的语句也不能在volatile变量之前执行。</p>
+<h2 id="阻塞队列"><a href="#阻塞队列" class="headerlink" title="阻塞队列"></a>阻塞队列</h2><p>阻塞队列常用于生产者和消费者的场景，生产者是往队列里添加元素的线程，消费者是从队列里拿元素的线程。阻塞队列就是生产者存放元素的容器，而消费者也只从容器里拿元素。</p>
+<h5 id="常见使用场景"><a href="#常见使用场景" class="headerlink" title="常见使用场景"></a>常见使用场景</h5><ol>
+<li>当队列中没有数据的情况下，消费者端的所有线程都会被自动阻塞，直到有数据放入队列。</li>
+<li>当队列中填满数据的情况下，生产者端的所有线程都会被自动阻塞，直到队列中有空的位置，线程被自动唤醒。</li>
+</ol>
+<p>支持以上两种阻塞场景的队列被称为阻塞队列。</p>
+<h4 id="Java中的阻塞队列"><a href="#Java中的阻塞队列" class="headerlink" title="Java中的阻塞队列"></a>Java中的阻塞队列</h4><ol>
+<li><p>ArrayBlockingQueue：由数组结构组成的阻塞队列。</p>
+</li>
+<li><p>LinkedBlockingQueue：由链表结构组成的阻塞队列。</p>
+</li>
+<li><p>PriorityBlockingQueue：支持优先级排序的无界阻塞队列。</p>
+<p>默认情况下元素采取自然顺序升序排列。可以自定义compareTo方法来指定元素排列规则；或者初始化PriorityBlockingQueue时指定构造参数Comparator。</p>
+</li>
+<li><p>DelayQueue：使用优先级队列实现的无界阻塞队列。</p>
+<p>它是一个支持延时获取元素的无界阻塞队列。队列使用PriorityQueue来实现。队列中的元素必须实现Delayed接口。创建元素时，可以指定元素到期时间，只有在元素到期时才能从队列中取走。</p>
+</li>
+<li><p>SynchronousQueue：不存储元素的阻塞队列。</p>
+<p>不存储元素的阻塞队列。每个插入操作必须等待另一个线程的移除操作。</p>
+</li>
+<li><p>LinkedTransferQueue：由链表结构组成的无界阻塞队列。</p>
+<p>它是由一个链表结构组成的无界阻塞TransferQueue队列。TransferQueue接口的transfer和tryTransfer方法用来传递元素。</p>
+</li>
+<li><p>LinkedBlockingDeque：由链表结构组成的双向阻塞队列。</p>
+<p>双向队列可以从队列的两端插入和移出元素。</p>
+</li>
+</ol>
+<h5 id="ArrayBlockingQueue"><a href="#ArrayBlockingQueue" class="headerlink" title="ArrayBlockingQueue"></a>ArrayBlockingQueue</h5><p>它是用数组实现的有界阻塞队列，并按照先进先出的原则对元素进行排序。默认情况下不保证线程公平地访问队列。（公平访问队列就是指阻塞的所有生产者线程或消费者线程，当队列可用时，可以按照阻塞的先后顺序访问队列。即先阻塞的生产者线程，可以先往队列里插入元素；先阻塞的消费者线程，可以先从队列里获取元素。）</p>
+<h5 id="LinkedBlockingQueue"><a href="#LinkedBlockingQueue" class="headerlink" title="LinkedBlockingQueue"></a>LinkedBlockingQueue</h5><p>它是基于链表的阻塞队列，次队列按照先进先出的原则对元素进行排序，其内部也维持着一个数据缓存队列（链表）。当生产者往队列里放入一个数据时，队列会从生产者手中获取数据，并缓存在队列内部，而生产者立即返回；只有当队列缓冲区达到缓存容量的最大值时（可以通过构造方法指定），才会阻塞生产者队列，直到消费者从队列中消费掉一份数据，生产者会被唤醒。</p>
+<p>LinkedBlockingQueue之所有能够高效地处理并发数据，还因为其对生产者端和消费者端分别采用了独立的锁来控制数据同步。这意味着在高并发的情况下，生产者和消费者可以并行操作队列中的数据。</p>
+<p>需要注意的是：如果构造一个LinkedBlockingQueue对象，而没有指定其容量大小，LinkedBlockingQueue会默认一个类似无限大小的容量。如果生产者的速度超过消费者的速度，也许还没有等到队列填满进而阻塞生产，系统内存就已经被消耗殆尽。</p>
+<h4 id="阻塞队列的实现原理"><a href="#阻塞队列的实现原理" class="headerlink" title="阻塞队列的实现原理"></a>阻塞队列的实现原理</h4><p>ArrayBlockingQueue为例，内部是个Object数组、队首、队尾元素的下表、元素个数、可重入锁ReentrantLock、notEmpty条件和notFull条件。put判断当前数组长度是否等于元素个数，等待notFull信号，当插入成功后调用notEmpty.signal()唤醒正在等待获取元素的线程；take等待notEmpty信号，拿取后唤醒等待插入的线程。</p>
+<h2 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h2><p>在Java1.5中提供了Executor框架用于把任务的提交和执行解耦，任务交给Runnable或者Callable，而Executor框架用来处理任务。Executor框架中最核心的成员就是ThreadPoolExecutor[ɪɡˈzekjətər] ，它是线程池的核心实现类。</p>
+<h5 id="ThreadPoolExecutor"><a href="#ThreadPoolExecutor" class="headerlink" title="ThreadPoolExecutor"></a>ThreadPoolExecutor</h5><p>可以通过ThreadPoolExecutor来创建一个线程池，其参数最多的构造方法如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">ThreadPoolExecutor</span><span class="hljs-params">(<span class="hljs-keyword">int</span> corePoolSize,</span></span><br><span class="hljs-function"><span class="hljs-params">                          <span class="hljs-keyword">int</span> maximumPoolSize,</span></span><br><span class="hljs-function"><span class="hljs-params">                          <span class="hljs-keyword">long</span> keepAliveTime,</span></span><br><span class="hljs-function"><span class="hljs-params">                          TimeUnit unit,</span></span><br><span class="hljs-function"><span class="hljs-params">                          BlockingQueue&lt;Runnable&gt; workQueue,</span></span><br><span class="hljs-function"><span class="hljs-params">                          ThreadFactory threadFactory,</span></span><br><span class="hljs-function"><span class="hljs-params">                          RejectedExecutionHandler handler)</span> </span>&#123;<br>    <span class="hljs-keyword">if</span> (corePoolSize &lt; <span class="hljs-number">0</span> ||<br>        maximumPoolSize &lt;= <span class="hljs-number">0</span> ||<br>        maximumPoolSize &lt; corePoolSize ||<br>        keepAliveTime &lt; <span class="hljs-number">0</span>)<br>        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> IllegalArgumentException();<br>    <span class="hljs-keyword">if</span> (workQueue == <span class="hljs-keyword">null</span> || threadFactory == <span class="hljs-keyword">null</span> || handler == <span class="hljs-keyword">null</span>)<br>        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> NullPointerException();<br>    <span class="hljs-keyword">this</span>.corePoolSize = corePoolSize;<br>    <span class="hljs-keyword">this</span>.maximumPoolSize = maximumPoolSize;<br>    <span class="hljs-keyword">this</span>.workQueue = workQueue;<br>    <span class="hljs-keyword">this</span>.keepAliveTime = unit.toNanos(keepAliveTime);<br>    <span class="hljs-keyword">this</span>.threadFactory = threadFactory;<br>    <span class="hljs-keyword">this</span>.handler = handler;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>corePoolSize：核心线程数。默认情况下线程池是空的，只有任务提交时才会创建线程。如果当前运行的线程数少于corePoolSize，则创建新线程来处理任务；如果等于或多于corePoolSize，则不再创建。如果调用线程池的prestartAllCoreThreads方法，线程会提前创建并启动所有的核心线程来等待任务。</li>
+<li>maximumPoolSize：线程池允许创建的最大线程数。</li>
+<li>keepAliveTime：非核心线程闲置的超时时间。超过这个时间则回收。如果设置allowCoreThreadTimeOut属性为true时，keepAliveTime也会应用到核心线程上。</li>
+<li>unit：keepAliveTime参数的时间单位。</li>
+<li>workQueue：任务队列。如果当前线程数大于corePoolSize，则将任务添加到此任务队列中。</li>
+<li>threadFactory：线程工厂。可以给线程创建名字。</li>
+<li>handler：饱和策略。这是当任务队列和线程池都满了时所采取的应对策略，默认是AbordPolicy（无法处理新任务），并抛出RejectedExecutionException异常。还有其他3种：<ul>
+<li>CallerRunsPolicy:用调用者所在的线程来处理任务。能减缓新任务的提交速度。</li>
+<li>DicardPolicy：不能执行的任务，并将该任务删除。</li>
+<li>DiscardOldestPolicy：丢弃队列最老的未处理请求，并执行当前任务。</li>
+</ul>
+</li>
+</ul>
+<h5 id="线程池的处理流程"><a href="#线程池的处理流程" class="headerlink" title="线程池的处理流程"></a>线程池的处理流程</h5><p>​    <img src="https://tva3.sinaimg.cn/large/007ghrgxgy1gls1dnuaggj30az0qcab0.jpg" srcset="/img/loading.gif" alt="线程池的处理流程"></p>
+<h5 id="线程池执行示意图"><a href="#线程池执行示意图" class="headerlink" title="线程池执行示意图"></a>线程池执行示意图</h5><p><img src="https://tva3.sinaimg.cn/large/007ghrgxgy1gls1okr52fj30s60hegmv.jpg" srcset="/img/loading.gif" alt="线程池执行示意图"></p>
+<h2 id="线程池的种类"><a href="#线程池的种类" class="headerlink" title="线程池的种类"></a>线程池的种类</h2><ul>
+<li><p>FixedThreadPool</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> ExecutorService <span class="hljs-title">newFixedThreadPool</span><span class="hljs-params">(<span class="hljs-keyword">int</span> nThreads)</span> </span>&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> ThreadPoolExecutor(nThreads, nThreads,<br>                                  <span class="hljs-number">0L</span>, TimeUnit.MILLISECONDS,<br>                                  <span class="hljs-keyword">new</span> LinkedBlockingQueue&lt;Runnable&gt;());<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>可重用固定线程数的线程池。FixedThreadPool的corePoolSize和maximumPoolSize都设置为nThreads，也就一位置FixedThreadPool只有核心线程，并且数量是固定的。</p>
+</li>
+<li><p>CachedThreadPool</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> ExecutorService <span class="hljs-title">newCachedThreadPool</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> ThreadPoolExecutor(<span class="hljs-number">0</span>, Integer.MAX_VALUE,<br>                                  <span class="hljs-number">60L</span>, TimeUnit.SECONDS,<br>                                  <span class="hljs-keyword">new</span> SynchronousQueue&lt;Runnable&gt;());<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>根据需要创建线程的线程池。没有核心线程，非核心线程无界。空闲线程等待新任务事件为60s。</p>
+</li>
+<li><p>SingleThreadExecutor</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> ExecutorService <span class="hljs-title">newSingleThreadExecutor</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> FinalizableDelegatedExecutorService<br>        (<span class="hljs-keyword">new</span> ThreadPoolExecutor(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>,<br>                                <span class="hljs-number">0L</span>, TimeUnit.MILLISECONDS,<br>                                <span class="hljs-keyword">new</span> LinkedBlockingQueue&lt;Runnable&gt;()));<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>使用单个工作线程的线程池。有且仅有一个核心线程，能确保所有的任务在一个线程中按照顺序执行。</p>
+</li>
+<li><p>ScheduledThreadPool [ˈskedʒuːld]</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> ScheduledExecutorService <span class="hljs-title">newScheduledThreadPool</span><span class="hljs-params">(<span class="hljs-keyword">int</span> corePoolSize)</span> </span>&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> ScheduledThreadPoolExecutor(corePoolSize);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>能实现定时和周期性任务的线程池。</p>
+</li>
+</ul>
+<h2 id="AsyncTask原理"><a href="#AsyncTask原理" class="headerlink" title="AsyncTask原理"></a>AsyncTask原理</h2><ul>
+<li>onPreExecute：在主线程中执行。做准备工作。</li>
+<li>doInbackground：在线程池中执行。onPreExecute执行之后执行，用于执行耗时操作。可以调用publishProgress更新进度。</li>
+<li>onProgressUpdate：在主线程中执行。当调用publishProgress时，此方法会将进度更新到UI。</li>
+<li>onPostExcute：在主线程中执行。当后台任务完成后，它会被执行。</li>
+</ul>
+<h4 id="Android3-0之前"><a href="#Android3-0之前" class="headerlink" title="Android3.0之前"></a>Android3.0之前</h4><p>核心线程数5个，最大线程数128个，KEEP_ALIVE为1s，采用LinkedBlockingQueue阻塞队列，大小为10。最多容纳138个任务（10+128），超出会进入饱和策略抛出异常。</p>
+<h4 id="Android3-0之后"><a href="#Android3-0之后" class="headerlink" title="Android3.0之后"></a>Android3.0之后</h4><p>使用SerialExecutor串行线程池，保证一个时间段只有一个任务执行（不会并行处理 可以调用executeOnExecutor方法改为并行）。</p>
+<p>定义了一个WorkerRunnable实现Callable接口，在call方法中调用doInbackground处理任务并得到结果，最终调用postResult方法传递结果。</p>
+<p>定义一个FutureTask可管理的异步任务，它实现了Runnable和Callable接口，将WokerRunnable作为参数传入FutureTask。</p>
+<p>当执行AsyncTask时，调用它的execute方法，该方法又调用executeOnExecutor方法，该方法首先调用onPreExecute方法，在给WorkerRunnable赋值，然后将FutureTask传入SerialExecutor。SerialExecutor线程池会调用FutureTask的run方法，最终会调用WorkerManger的call方法，call最终会调用postResult方法传递结果。</p>
+<p>在postResult中创建Message对象保存结果，并获取Handler发消息，Handler会调用AsyncTask的finish方法。在finish中判断是否取消，调用onCancelled或者onPostExecute方法。</p>
 
             </div>
             <hr>
