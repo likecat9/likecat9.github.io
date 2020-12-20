@@ -177,7 +177,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      4 字
+      1.4k 字
     </span>
   
 
@@ -187,7 +187,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1
+      16
        分钟
     </span>
   
@@ -220,7 +220,63 @@
             <h1 style="display: none">网络编程与网络框架</h1>
             
             <div class="markdown-body">
-              <h2 id="网络分层"><a href="#网络分层" class="headerlink" title="网络分层"></a>网络分层</h2>
+              <h2 id="网络分层"><a href="#网络分层" class="headerlink" title="网络分层"></a>网络分层</h2><p>从上到下是：</p>
+<ul>
+<li>应用层：HTTP（keepalive connections 保持连接）、FTP、邮件等协议，它规定了应用程序的数据格式。</li>
+<li>传输层：TCP（可靠面向连接协议）、UTP（不可靠无连接协议），建立主机到主机的通信。</li>
+<li>网络层：该层决定如何将数据从发送方路由到接收方。</li>
+<li>数据链路层：该层控制网络层与物理层之间的通信，保证数据在物理层进行可靠传输（重发帧）。</li>
+<li>物理层：连接计算机的物理手段。</li>
+</ul>
+<h2 id="TCP的三次握手和四次挥手"><a href="#TCP的三次握手和四次挥手" class="headerlink" title="TCP的三次握手和四次挥手"></a>TCP的三次握手和四次挥手</h2><p>建立连接的三次握手</p>
+<ul>
+<li>第一次：客户端发送连接请求报文段，将SYN设为1、seq设为x，客户端进入SYN_SENT状态。</li>
+<li>第二次：服务端确认SYN信息、将SYN设为1、seq设为y、ACK设为x+1，把这些数据打包为SYN+ACK发送给客户端。客户端收到此报文进入建立连接状态。</li>
+<li>第三次：客户端将ACK设为y+1，向服务端发送ACK报文。服务端接受到此报文进入建立连接状态。</li>
+</ul>
+<p>断开连接的四次挥手</p>
+<ul>
+<li>第一次：客户端设置seq和ACK，向服务端发送FIN报文段。</li>
+<li>第二次：服务端收到FIN报文段后，向客户端发送ACK报文段。</li>
+<li>第三次：服务端向客户端发送FIN报文段。</li>
+<li>第四次：客户端接收到FIN报文段后，向服务端发送ACK报文段。服务端收到ACK后就会关闭连接，客户端将不会收到任何回复，客户端关闭连接。</li>
+</ul>
+<h2 id="OKHTTP"><a href="#OKHTTP" class="headerlink" title="OKHTTP"></a>OKHTTP</h2><h4 id="请求流程"><a href="#请求流程" class="headerlink" title="请求流程"></a>请求流程</h4><p>请求是由OkHttp发出，真实的请求被封装到了RealCall类中，在调用okHttpClient.newCall(request).enqueue时，实际上是创建了一个RealCall，并调用RealCall对象的enqueue方法。（或execute方法）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Override</span> <span class="hljs-function"><span class="hljs-keyword">public</span> Call <span class="hljs-title">newCall</span><span class="hljs-params">(Request request)</span> </span>&#123;<br>  <span class="hljs-keyword">return</span> RealCall.newRealCall(<span class="hljs-keyword">this</span>, request, <span class="hljs-keyword">false</span> <span class="hljs-comment">/* for web socket */</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>异步请求，构造一个AsyncCall，并将自己放入执行队列。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Override</span> <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">enqueue</span><span class="hljs-params">(Callback responseCallback)</span> </span>&#123;<br>  <span class="hljs-keyword">synchronized</span> (<span class="hljs-keyword">this</span>) &#123;<br>    <span class="hljs-keyword">if</span> (executed) <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> IllegalStateException(<span class="hljs-string">&quot;Already Executed&quot;</span>);<br>    executed = <span class="hljs-keyword">true</span>;<br>  &#125;<br>  captureCallStackTrace();<br>  eventListener.callStart(<span class="hljs-keyword">this</span>);<br>  client.dispatcher().enqueue(<span class="hljs-keyword">new</span> AsyncCall(responseCallback));<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>同步请求，直接执行，并返回结果。（onFailure、onResponse）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Override</span> <span class="hljs-function"><span class="hljs-keyword">public</span> Response <span class="hljs-title">execute</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> IOException </span>&#123;<br>    <span class="hljs-keyword">synchronized</span> (<span class="hljs-keyword">this</span>) &#123;<br>        <span class="hljs-keyword">if</span> (executed) <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> IllegalStateException(<span class="hljs-string">&quot;Already Executed&quot;</span>);<br>        executed = <span class="hljs-keyword">true</span>;<br>    &#125;<br>    captureCallStackTrace();<br>    eventListener.callStart(<span class="hljs-keyword">this</span>);<br>    <span class="hljs-keyword">try</span> &#123;<br>        client.dispatcher().executed(<span class="hljs-keyword">this</span>);<br>        Response result = getResponseWithInterceptorChain();<br>        <span class="hljs-keyword">if</span> (result == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> IOException(<span class="hljs-string">&quot;Canceled&quot;</span>);<br>        <span class="hljs-keyword">return</span> result;<br>    &#125; <span class="hljs-keyword">catch</span> (IOException e) &#123;<br>        eventListener.callFailed(<span class="hljs-keyword">this</span>, e);<br>        <span class="hljs-keyword">throw</span> e;<br>    &#125; <span class="hljs-keyword">finally</span> &#123;<br>        client.dispatcher().finished(<span class="hljs-keyword">this</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>这两种请求都会调用getResponseWithInterceptorChain获取Response。</p>
+<p>Dispatcher调度器用于控制并发的请求，设有最大并发请求数maxRequests （64）、每个主机的最大请求数maxRequestsPerHost （5）、消费者线程池和3个双端队列</p>
+<ul>
+<li>readyAsyncCalls：准备运行的异步请求队列</li>
+<li>runningAsyncCalls：正在运行的异步请求队列</li>
+<li>runningSyncCalls：正在运行的同步请求队列</li>
+</ul>
+<p>同步请求直接将请求添加到runningSyncCalls；异步请求会根据当前正在运行的异步数进行判断，如果正在运行的异步请求队列的大小小于最大并发请求数且同一主机的最大请求数小于每个主机的最大请求数则将请求放入正在运行的异步请求队列，否则，放入准备运行的异步请求队列。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">synchronized</span> <span class="hljs-keyword">void</span> <span class="hljs-title">enqueue</span><span class="hljs-params">(AsyncCall call)</span> </span>&#123;<br>  <span class="hljs-keyword">if</span> (runningAsyncCalls.size() &lt; maxRequests &amp;&amp; runningCallsForHost(call) &lt; maxRequestsPerHost) &#123;<br>    runningAsyncCalls.add(call);<br>    executorService().execute(call);<br>  &#125; <span class="hljs-keyword">else</span> &#123;<br>    readyAsyncCalls.add(call);<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>getResponseWithInterceptorChain是真正发起请求的地方，该方法首先构建一个拦截器列表，添加拦截器，然后实例化一个RealInterceptorChain对象将拦截器列表传入该对象，再调用该对象的proceed方法对拦截列表里的拦截器链式调用。</p>
+<p>拦截器列表的添加顺序如下：</p>
+<ol>
+<li>client.interceptors()：自定义拦截器</li>
+<li>RetryAndFollowUpInterceptor：重试和重定向拦截器</li>
+<li>BridgeInterceptor：请求、响应转换拦截器，将用户构造的请求转为发送服务器的请求、将服务器的响应转换为对用户友好的响应</li>
+<li>CacheInterceptor：缓存拦截器，读取、更新缓存</li>
+<li>ConnectInterceptor：连接拦截器，建立与服务器的连接</li>
+<li>CallServerInterceptor：从服务器读取响应的拦截器</li>
+</ol>
+<h5 id="连接池（ConnectionPool）"><a href="#连接池（ConnectionPool）" class="headerlink" title="连接池（ConnectionPool）"></a>连接池（ConnectionPool）</h5><p>频繁的进行建立Sokcet连接（TCP三次握手）和断开Socket（TCP四次分手）是非常消耗网络资源和浪费时间的，HTTP中的keepalive连接对于降低延迟和提升速度有非常重要的作用。复用连接就需要对连接进行管理——连接池。</p>
+<p>OkHttp支持5个并发socket连接，默认keepAlive为5分钟。</p>
+<p>ConnectionPool的组成主要有：一个线程池（无缓存的阻塞队列 SynchronousQueue），空闲的socket最大连接数、socket的keepAlive时间和一个保存RealConnection的双端队列。</p>
+<p>RealConnection队列使用socket进行连接，其保存了一个StreamAllocation引用列表，此列表用于计数。</p>
+<p>Runnable对象：cleanupRunnable负责清理连接。它是一个阻塞操作，先执行清理并返回下次需要清理的间隔时间，调用wait方法释放锁。等到时间到了以后再次执行清理操作并返回间隔时间，循环往复。</p>
+<p>清理的工作是由cleanup方法完成，流程为：1.遍历所有连接（查询连接内部StreamAllocation的引用数量、标记不活跃连接），2.开始判断：如果空闲连接超过5个或者keepAlive时间大于5分钟则将该连接清理，根据其他条件返回下次清理时间，3.关闭连接，返回时间0，立即再次进行清理。</p>
+
             </div>
             <hr>
             <div>
@@ -240,6 +296,8 @@
                       <a class="hover-with-bg" href="/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/">网络编程</a>
                     
                       <a class="hover-with-bg" href="/tags/%E7%BD%91%E7%BB%9C%E6%A1%86%E6%9E%B6/">网络框架</a>
+                    
+                      <a class="hover-with-bg" href="/tags/web/">web</a>
                     
                   </div>
                 
