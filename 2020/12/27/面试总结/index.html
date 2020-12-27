@@ -1,0 +1,669 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="请添加描述">
+  <meta name="author" content="likecat9">
+  <meta name="keywords" content="">
+  <title>面试总结 - 小哥哥，快来玩啊</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.6","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>LIKECAT9的小博客</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="面试总结">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      5.8k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      62
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">面试总结</h1>
+            
+            <div class="markdown-body">
+              <h1 id="面试复习内容"><a href="#面试复习内容" class="headerlink" title="面试复习内容"></a>面试复习内容</h1><h2 id="JAVA"><a href="#JAVA" class="headerlink" title="JAVA"></a>JAVA</h2><h3 id="JAVA基础"><a href="#JAVA基础" class="headerlink" title="JAVA基础"></a>JAVA基础</h3><h4 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h4><p>object类主要方法有：</p>
+<ul>
+<li><p>clone</p>
+<p>创建并返回此对象的一个副本。</p>
+</li>
+<li><p>equals</p>
+<p>判断其他对象与此对象是否相等，默认情况下比较的是地址。当此方法被重写时，有必要重写hashCode方法，以维护hashCode方法的常规协定，即相等对象必须有相等的哈希码。</p>
+</li>
+<li><p>finalize</p>
+<p>当垃圾回收器确定不存在对该对象的更多引用时，由该对象的垃圾回收期调用此方法。</p>
+</li>
+<li><p>getClass</p>
+<p>获取当前运行时的类对象。</p>
+</li>
+<li><p>hashCode</p>
+<p>返回该对象的哈希码。</p>
+</li>
+<li><p>notify</p>
+<p>随机唤醒一个在此对象监视器上等待的单个线程。</p>
+</li>
+<li><p>notifyAll</p>
+<p>唤醒此对象监视器上所有等待的线程。</p>
+</li>
+<li><p>toString</p>
+</li>
+<li><p>wait X3</p>
+<p>使当前线程进入阻塞状态，放弃锁，直到此对象的notify唤醒。</p>
+</li>
+</ul>
+<h5 id="equals和-的区别？"><a href="#equals和-的区别？" class="headerlink" title="equals和==的区别？"></a>equals和==的区别？</h5><ul>
+<li>==：基础类型比较的是值，引用类型比较的是地址。</li>
+<li>equals：默认比较对象的地址，可以重写。</li>
+</ul>
+<p>基础类型：byte、short、int、long、float、double、char、boolean。</p>
+<p>引用类型：如数组、String、对象等。</p>
+<h5 id="equals和hashcode的关系？"><a href="#equals和hashcode的关系？" class="headerlink" title="equals和hashcode的关系？"></a>equals和hashcode的关系？</h5><p>equals相等则hashCode一定相等、hashCode相等而equals不一定相等。</p>
+<h4 id="String"><a href="#String" class="headerlink" title="String"></a>String</h4><h5 id="String、StringBuffer和StringBuilder的区别？"><a href="#String、StringBuffer和StringBuilder的区别？" class="headerlink" title="String、StringBuffer和StringBuilder的区别？"></a>String、StringBuffer和StringBuilder的区别？</h5><p>String：不可修改的对象，每次修改都会生成新的对象。String的对象实际上是对在方法区中的字符串的引用，如 String s=“abc”; 会在方法区生成一个abc的字符串，s是该字符串的引用；再运行 s=“def”; 则会在方法区生成一个def字符串，s改为def的引用。</p>
+<p>StringBuffer：可变对象，非线程安全。</p>
+<p>StringBuilder：可变对象，线程安全。</p>
+<p>使用效率：StringBuilder大于StringBuffer大于String。</p>
+<h4 id="继承–面向对象的特性"><a href="#继承–面向对象的特性" class="headerlink" title="继承–面向对象的特性"></a>继承–面向对象的特性</h4><h5 id="Java中抽象类和接口的特点？"><a href="#Java中抽象类和接口的特点？" class="headerlink" title="Java中抽象类和接口的特点？"></a>Java中抽象类和接口的特点？</h5><p>共同点：</p>
+<ol>
+<li>都是作为上层使用，定义抽象方法，成为某种规范。</li>
+<li>都不能直接对其进行实例化。</li>
+</ol>
+<p>不同点：</p>
+<ol>
+<li>抽象类可以有属性和成员方法，接口不行。</li>
+<li>一个类只能继承一个抽象方法，而可以实现多个接口。</li>
+<li>抽象类的变量可以是普通变量，而接口中只能有静态变量。</li>
+</ol>
+<h5 id="关于多态的理解？"><a href="#关于多态的理解？" class="headerlink" title="关于多态的理解？"></a>关于多态的理解？</h5><p>多态是面对对象编程的特性之一（继承、封装和多态），允许不同类对同一事件进行响应。</p>
+<p>使用多态：继承一个类，重写父类的方法，使用父类引用指向一个子类对象。</p>
+<p>实现方式：接口、重写父类方法和重载方法。</p>
+<h4 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h4><h5 id="List"><a href="#List" class="headerlink" title="List"></a>List</h5><p>list接口已经声明了所有方法。</p>
+<p>常用实现类：ArrayList、LinkedList。</p>
+<h5 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList</h5><p>数组实现的一个列表，可以存入空元素，允许重复元素，有序，非线程安全。默认容量为10，填满后下一次添加元素时扩容，每次扩容为原来的1.5倍。</p>
+<h5 id="ArrayList与LinkedList的区别？"><a href="#ArrayList与LinkedList的区别？" class="headerlink" title="ArrayList与LinkedList的区别？"></a>ArrayList与LinkedList的区别？</h5><ol>
+<li>ArrayList基于数组实现，LinkedList基于链表。</li>
+<li>ArrayList的随机访问效率高于LinkedList，ArrayList可以用数组下标访问元素，而LinkedList需要移动链表指针。</li>
+<li>对于新增和删除操作以及扩容问题LinkedList优于ArrayList，ArrayList在扩容时移动整个数组元素。</li>
+</ol>
+<h5 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h5><p>不包含重复元素的集合，即e1.equals(e2)不成立。</p>
+<h5 id="HashSet"><a href="#HashSet" class="headerlink" title="HashSet"></a>HashSet</h5><p>基于HashMap实现，允许空元素、不允许重复对象、非有序、非线程安全的集合。默认容量16。HashSet中的HashMap中Key为元素，value为定义的一个Object常量。</p>
+<h5 id="TreeSet"><a href="#TreeSet" class="headerlink" title="TreeSet"></a>TreeSet</h5><p>基于TreeMap实现，允许空元素、不允许重复对象、非有序、非线程安全的集合。</p>
+<h5 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h5><p>Map中的元素成对存在，即每一个元素由一个键值对组成，其Key不能重复，值可以重复。</p>
+<h5 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h5><p>基于哈希表实现，非有序，非线程安全。</p>
+<p>存储过程：</p>
+<ol>
+<li>通过哈希值确定位置。</li>
+<li>如果该位置没有节点，直接存放。</li>
+<li>如果该节点冲突，遍历该节点及后续的节点比较Key的值，如果相等则覆盖。</li>
+<li>新增节点，默认使用链表，相连节点超过8时，在JDK1.8中变为红黑树。</li>
+<li>长度总是2的幂。</li>
+</ol>
+<h5 id="HashTable"><a href="#HashTable" class="headerlink" title="HashTable"></a>HashTable</h5><p>线程安全的哈希表，其元素也是键值对。因为在put操作时使用的是Synchronized关键字锁住整个对象，所以效率低下。</p>
+<h5 id="LinkedHashMap"><a href="#LinkedHashMap" class="headerlink" title="LinkedHashMap"></a>LinkedHashMap</h5><p>HashMap的子类，由哈希表+链表实现，链表保证了其有序，非线程安全。</p>
+<h5 id="ConcurrentHashMap"><a href="#ConcurrentHashMap" class="headerlink" title="ConcurrentHashMap"></a>ConcurrentHashMap</h5><p>线程安全的HashMap。元素不可为空。</p>
+<ul>
+<li>JDK1.7中使用分段锁机制，其内部保存一个Segment数组将Map分段，在put时首先使用哈希算法定位到元素属于哪个Segment，然后使用ReentrantLock重入锁锁住该Segment对象，所以可以多线程对Map进行put操作，但受制于Segment的长度。</li>
+<li>JDK1.8中使用数组+链表/红黑树实现，数组为哈希表头、链表存储数据、红黑树结构优化链表遍历速度。其线程安全由CAS原子操作、volatile、synchronized重入锁实现。CAS原子操作即操作的原子性。</li>
+</ul>
+<h5 id="SparseArray"><a href="#SparseArray" class="headerlink" title="SparseArray"></a>SparseArray</h5><p>存储键值对，使用两个数组保存，一个保存key，一个保存value。适用于Key为整形，数据量较小的情况。</p>
+<h4 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h4><p>在泛型的使用中，将操作的数据类型作为一个参数，用于接口、类和方法中，即泛型接口、泛型类和泛型方法。</p>
+<p>它提高了类型安全，避免不必要的类型强转，提升了可读性。</p>
+<p>泛型在编译后会被擦除。</p>
+<h3 id="JAVA进阶"><a href="#JAVA进阶" class="headerlink" title="JAVA进阶"></a>JAVA进阶</h3><h4 id="JAVA并发"><a href="#JAVA并发" class="headerlink" title="JAVA并发"></a>JAVA并发</h4><h5 id="线程的状态"><a href="#线程的状态" class="headerlink" title="线程的状态"></a>线程的状态</h5><ul>
+<li>New：新建状态。</li>
+<li>Runnable：可运行状态，一旦调用start方法，线程就处于Runnable状态，是否运行取决于CPU。</li>
+<li>Blocked：阻塞状态。</li>
+<li>Waiting：等待状态。</li>
+<li>Timed Waiting：超时等待状态。</li>
+<li>Terminated：终止状态。</li>
+</ul>
+<h5 id="Sleep与Wait的区别？"><a href="#Sleep与Wait的区别？" class="headerlink" title="Sleep与Wait的区别？"></a>Sleep与Wait的区别？</h5><p>wait进入阻塞等待被唤醒，并且释放锁；Sleep超时等待，阻塞线程超时后自动被唤醒，不释放锁。</p>
+<h5 id="进程与线程的区别？"><a href="#进程与线程的区别？" class="headerlink" title="进程与线程的区别？"></a>进程与线程的区别？</h5><p>一个程序就是一个进程，一个进程可以有多个线程，线程是轻量级进程，它拥有自己的堆栈，可以访问共享的内存变量。</p>
+<h5 id="与新建一个线程相比，线程池的好处？"><a href="#与新建一个线程相比，线程池的好处？" class="headerlink" title="与新建一个线程相比，线程池的好处？"></a>与新建一个线程相比，线程池的好处？</h5><p>可以重复利用，节省CPU资源和重新创建线程的时间，使线程可控。</p>
+<h5 id="讲一讲线程池ThreadPoolExecutor构造参数的含义？"><a href="#讲一讲线程池ThreadPoolExecutor构造参数的含义？" class="headerlink" title="讲一讲线程池ThreadPoolExecutor构造参数的含义？"></a>讲一讲线程池ThreadPoolExecutor构造参数的含义？</h5><ul>
+<li>corePoolSize：核心线程数量。</li>
+<li>maximumPoolSize：最大线程数量，包括corePoolSize。</li>
+<li>keepAliveTime：线程最大空闲存活时间。</li>
+<li>unit：存活时间的单位。</li>
+<li>workQueue：阻塞队列，存放任务。</li>
+</ul>
+<h5 id="常用的线程池有哪些？"><a href="#常用的线程池有哪些？" class="headerlink" title="常用的线程池有哪些？"></a>常用的线程池有哪些？</h5><ul>
+<li>Executors.newFixedThreadPool：可重用固定线程数的线程池，其内部全是核心线程且数量固定，使用的是LinkedBlockingQueue阻塞队列，该阻塞队列由链表实现。</li>
+<li>Executors.SingleThreadPool：单一核心线程的线程池，能确保所有任务在一个线程中顺序执行，使用的阻塞队列是LinkedBlockingQueue。</li>
+<li>Executors.CachedThreadPool：根据需要创建线程的线程池，没有核心线程，使用的是SynchronousQueue阻塞队列，该阻塞队列不存储元素，插入后的下一次插入必须先让之前插入的元素出列后才能进行插入。</li>
+<li>Executors.ScheduledThreadPool：可定时和重复执行的线程池，使用的阻塞队列是DelayedWorkQueue。</li>
+</ul>
+<h5 id="常见的阻塞队列有哪些？"><a href="#常见的阻塞队列有哪些？" class="headerlink" title="常见的阻塞队列有哪些？"></a>常见的阻塞队列有哪些？</h5><ul>
+<li>ArrayBlockingQueue：数组结构的阻塞队列。</li>
+<li>LinkedBlockingQueue：链表结构的阻塞队列。</li>
+<li>SynchronousQueue：不保存的阻塞队列。</li>
+<li>PriorityBlockingQueue：按优先级排序的阻塞队列。</li>
+</ul>
+<h5 id="讲一讲线程池的运行流程？"><a href="#讲一讲线程池的运行流程？" class="headerlink" title="讲一讲线程池的运行流程？"></a>讲一讲线程池的运行流程？</h5><p>当新任务进入线程池后，线程池判断当前核心线程数是否已满，是则判断任务队列容量，否则用核心线程执行任务；判断任务队列是否已满，是则判断当前线程数量是否已满，否则将任务加入任务队列；判断当前线程数量是否已满，是则执行饱和策略，否则创建非核心线程执行任务。</p>
+<h5 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h5><p>多个线程同时被阻塞，它们的一个或全部在等待某个资源被释放。由于线程被无限期阻塞，程序无法正常终止。</p>
+<p>产生死锁的4个必要条件：</p>
+<ol>
+<li>互斥使用：当资源被一个线程占用时，其他线程无法占用该资源。</li>
+<li>不可抢占：资源占有者的资源不能被其他线程抢走，只能等待其释放资源。</li>
+<li>请求和保持：资源占有者在占有资源的同时请求其他资源。</li>
+<li>循环等待：存在一个等待队列：p1占有p2资源、p2占有p3资源、p3占有p1资源。</li>
+</ol>
+<h5 id="Synchronized关键字的使用？"><a href="#Synchronized关键字的使用？" class="headerlink" title="Synchronized关键字的使用？"></a>Synchronized关键字的使用？</h5><ol>
+<li>修饰方法：被修饰的方法同一时间只能有一个线程访问。</li>
+<li>同步代码块：锁住对象的对象锁，每个线程只能拿到该对象的对象锁才能进入代码块。</li>
+</ol>
+<h5 id="Synchronized锁对象与锁Class的区别？"><a href="#Synchronized锁对象与锁Class的区别？" class="headerlink" title="Synchronized锁对象与锁Class的区别？"></a>Synchronized锁对象与锁Class的区别？</h5><p>锁Class的情况下，无论多线程访问的是哪一个实例，都是串行；而锁对象则是多线程访问同一对象串行，不同对象并行。</p>
+<h5 id="Synchronized同步原理？"><a href="#Synchronized同步原理？" class="headerlink" title="Synchronized同步原理？"></a>Synchronized同步原理？</h5><p>对象都有一个monitor对象锁，线程会获取该monitor对象锁，实现同步；</p>
+<h5 id="Synchronized与Lock的区别？"><a href="#Synchronized与Lock的区别？" class="headerlink" title="Synchronized与Lock的区别？"></a>Synchronized与Lock的区别？</h5><ol>
+<li>一个是关键字，一个是接口。</li>
+<li>Synchronized遇到异常直接释放锁，Lock需要调用unlock释放锁。</li>
+<li>lock可中断，Synchronized不能中断。</li>
+<li>Synchronized不能尝试获取锁，lock可以尝试获取锁。</li>
+</ol>
+<h5 id="什么是乐观锁和悲观锁？"><a href="#什么是乐观锁和悲观锁？" class="headerlink" title="什么是乐观锁和悲观锁？"></a>什么是乐观锁和悲观锁？</h5><p>乐观锁：每次不加锁，假设在修改共享数据时其他线程不会修改此数据，如果发生冲突直接重试，直到成功为止。典型为CAS原子性操作，以atomic为代表的一系列类。</p>
+<p>悲观锁：假设在修改共享数据时，其他线程也会修改此数据，所以线程会等待锁的释放。典型为Synchronized和ReentrantLock。</p>
+<h5 id="什么是CAS？"><a href="#什么是CAS？" class="headerlink" title="什么是CAS？"></a>什么是CAS？</h5><p>CAS即比较与交换，CAS操作包含3个操作数：内存位置、预期原值和新值，如果内存位置的值与预期原值相匹配，则更新为新值，否则不进行任何操作。其底层是JVM调用本地方法实现原子性操作。</p>
+<h5 id="JAVA中的原子性、可见性和有序性分别是什么？"><a href="#JAVA中的原子性、可见性和有序性分别是什么？" class="headerlink" title="JAVA中的原子性、可见性和有序性分别是什么？"></a>JAVA中的原子性、可见性和有序性分别是什么？</h5><p>原子性：即对共享变量的操作要么全部执行，买么全部不执行。</p>
+<p>可见性：一个线程对共享变量进行修改后，另一个线程立即可见。</p>
+<p>有序性：JAVA语言允许编译器和处理器在不改变结果的情况下对指令进行重排序。</p>
+<h5 id="对volatile的了解有多少？"><a href="#对volatile的了解有多少？" class="headerlink" title="对volatile的了解有多少？"></a>对volatile的了解有多少？</h5><p>volatile保证了可见性与有序性，不保证原子性。</p>
+<h4 id="JVM相关"><a href="#JVM相关" class="headerlink" title="JVM相关"></a>JVM相关</h4><h5 id="Java内存区域是如何划分的？"><a href="#Java内存区域是如何划分的？" class="headerlink" title="Java内存区域是如何划分的？"></a>Java内存区域是如何划分的？</h5><ul>
+<li>程序计数器：用于指示当前线程的字节码执行位置。</li>
+<li>Java虚拟机栈：存放Java方法相关数据，如局部变量。</li>
+<li>本地方法栈：存放本地方法，如C++等底层代码。</li>
+<li>Java堆：保存所有对象的实例。</li>
+<li>方法区：存放类信息、静态变量和常量等。</li>
+</ul>
+<h5 id="如何判断对象可回收？"><a href="#如何判断对象可回收？" class="headerlink" title="如何判断对象可回收？"></a>如何判断对象可回收？</h5><p>Java通过可达性算法判断对象是否可回收，可达性算法通过一系列GC Root节点，自上而下关联所有的引用，串成引用链，当一个对象没有和任何引用链相关联时，即可回收。</p>
+<h5 id="GC的常用算法？"><a href="#GC的常用算法？" class="headerlink" title="GC的常用算法？"></a>GC的常用算法？</h5><ul>
+<li>标记-清除：先标记所有需要回收的对象，然后统一回收所有被标记的对象。</li>
+<li>分代算法：根据对象存活的周期，Java堆会分为新生代和老年代，根据不同的特性选择回收算法。</li>
+</ul>
+<h5 id="四种引用即区别是什么？"><a href="#四种引用即区别是什么？" class="headerlink" title="四种引用即区别是什么？"></a>四种引用即区别是什么？</h5><ul>
+<li>强引用：只要强引用在，就不会被回收。</li>
+<li>软引用：在内存不足时会被回收。</li>
+<li>弱引用：只要JVM开始回收内存，就会被回收。</li>
+<li>虚引用：必须和引用队列一起使用，该引用对象随时会被回收。</li>
+</ul>
+<h4 id="类加载"><a href="#类加载" class="headerlink" title="类加载"></a>类加载</h4><h5 id="类加载的过程？"><a href="#类加载的过程？" class="headerlink" title="类加载的过程？"></a>类加载的过程？</h5><ol>
+<li>加载：从二进制流转换为对应的类型信息，从而生成一个Class对象。</li>
+<li>连接<ol>
+<li>验证：检查Class字节流包含的信息符合当前虚拟机的要求。</li>
+<li>准备：为静态变量分配内存地址并赋值（默认值）。</li>
+<li>解析：引用内存地址。</li>
+</ol>
+</li>
+<li>初始化：为静态变量赋值（定义的值）。</li>
+<li>使用</li>
+<li>卸载</li>
+</ol>
+<h2 id="Android"><a href="#Android" class="headerlink" title="Android"></a>Android</h2><h3 id="Activity"><a href="#Activity" class="headerlink" title="Activity"></a>Activity</h3><h5 id="Activity生命周期？"><a href="#Activity生命周期？" class="headerlink" title="Activity生命周期？"></a>Activity生命周期？</h5><ul>
+<li>onCreate：此时Activity不可见，不可交互，常用语初始化View。</li>
+<li>onRestart</li>
+<li>onStart：此时Activity可见，不可交互，此方法会在从暂停状态到活动状态后调用，会被多次被调用。</li>
+<li>onResume：此时Activity可见，可交互，可以在此时执行开启动画或者打开相机等操作，Activity重新可见即会调用此方法。</li>
+<li>onPause：此时Activity可见，不可交互，当Activity失去焦点时调用此方法，在一个Activity中启动另一个Activity后，新的Activity会等待该Activity的onPause方法走完才会进入onCreate方法。</li>
+<li>onStop：此时Activity不可见，不可交互，当Activity完全不可见、App进入后台等时调用，之后要么走onDestroy要么走onRestart-&gt;onStart-&gt;onResume。</li>
+<li>onDestroy：Activity销毁前会调用此方法，常用语释放资源。</li>
+</ul>
+<h5 id="当一个Activity启动一个新的Activity它们的生命周期方法是怎样的？"><a href="#当一个Activity启动一个新的Activity它们的生命周期方法是怎样的？" class="headerlink" title="当一个Activity启动一个新的Activity它们的生命周期方法是怎样的？"></a>当一个Activity启动一个新的Activity它们的生命周期方法是怎样的？</h5><p>A：onPause，B：onCreate，B：onStart，B：onResume，A：onStop</p>
+<h5 id="如果屏幕旋转Activity生命周期方法如何调用？"><a href="#如果屏幕旋转Activity生命周期方法如何调用？" class="headerlink" title="如果屏幕旋转Activity生命周期方法如何调用？"></a>如果屏幕旋转Activity生命周期方法如何调用？</h5><p>屏幕旋转Activity会被销毁，并重新打开Activity。</p>
+<p>onPause，onStop，onDestroy，onCreate，onStart，onResume。</p>
+<h5 id="Activity四种启动模式了解多少？"><a href="#Activity四种启动模式了解多少？" class="headerlink" title="Activity四种启动模式了解多少？"></a>Activity四种启动模式了解多少？</h5><ul>
+<li>Standard：默认模式，每次启动该Activity都会在任务栈中创建一个该Activity的实例。</li>
+<li>SingleTop：栈顶复用模式，启动该Activity时如果该Activity在栈顶则直接使用该Activity，并调用onNewIntent方法；不在栈顶则创建新的Activity实例。</li>
+<li>SingleTask：栈内复用模式，启动该Activity时如果该栈内存在该Activity的实例，则直接复用，调用onNewIntent方法，并将其上面的所有Activity出栈。</li>
+<li>SingleInstance：全局唯一模式，该Activity会拥有和SingleTask一样的特性并且独占整个栈。</li>
+</ul>
+<h5 id="Activity的启动模式有哪些？"><a href="#Activity的启动模式有哪些？" class="headerlink" title="Activity的启动模式有哪些？"></a>Activity的启动模式有哪些？</h5><ul>
+<li><p>显式</p>
+<p>直接startActivity，new一个Intent设置要跳转的Activity的Class。</p>
+</li>
+<li><p>隐式</p>
+<p>startActivity，new一个Intent，不需要设置要跳转的Class，而是设置Intent的Action为Intent.ACTION_VIEW，或者设置为自定义的字段。其中如果设置为ACTION_VIEW则时调用如电话簿等Activity，需要设置Intent的data；如果设置为自定义的字段，则该字段应该和目标Activity的intent-filter中的action字段匹配，并且需要加上category为default，否则会抛出异常。</p>
+</li>
+</ul>
+<h5 id="Activity的启动流程了解多少？"><a href="#Activity的启动流程了解多少？" class="headerlink" title="Activity的启动流程了解多少？"></a>Activity的启动流程了解多少？</h5><p>首先从Main方法进入，创建一个ActivityThread类，该类调用attch方法通知ActivityManagerService进行创建Application之前的初始化操作（使用binder进行进程间通信），开始循环等待消息。</p>
+<p>当ActivityManagerService完成创建Application之前的所有准备工作后会发送可以创建Application的消息，在主线程的主Handler中处理该消息。</p>
+<p>主Handler中调用handleBindApplication方法创建Application，还会创建一个Instrumentation，该类是辅助类用于调用Activity生命周期及其他事务。</p>
+<p>主Handler中调用handleLuanchActivity方法，使用Instrumentation辅助对象创建Activity，再使用该对象调用Activity的onCreate方法，在onCreate方法中会通过setContentView创建一个DecorView，并解析传入的xml Id，将解析后的view放入DecorView中，此时DecorView没有加载到WindowManager中。</p>
+<p>然后会调用handleResumeActivity，该方法会先回调Activity的onResume方法，然后再将DecorView传入WindowManger。</p>
+<p>WindowManager会创建一个ViewRootImpl，将DecorView放入此root中，然后请求第一次绘制。</p>
+<h5 id="打开一个APP的启动流程是什么？"><a href="#打开一个APP的启动流程是什么？" class="headerlink" title="打开一个APP的启动流程是什么？"></a>打开一个APP的启动流程是什么？</h5><p>当一个APP被点击时，首先要和zygote建立socket连接，将创建进程需要的参数发送给zygote，zygote接收到参数后fork出一个进程，通过findStaticMain方法找到ActivityThread的main方法并调用。</p>
+<h5 id="binder了解多少？"><a href="#binder了解多少？" class="headerlink" title="binder了解多少？"></a>binder了解多少？</h5><p>binder是Android独有的跨进程通信组件，其使用内存映射的方式修改数据效率更高，安全性好。</p>
+<h3 id="Service"><a href="#Service" class="headerlink" title="Service"></a>Service</h3><h5 id="Service的启动方式有哪些？"><a href="#Service的启动方式有哪些？" class="headerlink" title="Service的启动方式有哪些？"></a>Service的启动方式有哪些？</h5><ul>
+<li>Started：从其他组件调用startService启动一个Service，该方法启动的Service会一直存在于后台，直到自己调用stopSlef或者其他组件调用stopService。</li>
+<li>Bind：其他组件调用bindService来绑定一个Service，该Service会随着被绑定的组件销毁而销毁；一个Service可以被多个组件绑定，只有所有绑定了该Service的组件调用了unBind才会销毁该Service。</li>
+</ul>
+<h5 id="IntentService和Service的区别？"><a href="#IntentService和Service的区别？" class="headerlink" title="IntentService和Service的区别？"></a>IntentService和Service的区别？</h5><p>在Service中执行耗时操作需要新建一个线程，而IntentService默认开了一个子线程，在onHandleIntent方法中处理intent传来的数据，因为会顺序执行指令不用担心多线程问题，并且会在所有请求完成后自动停止该Service。</p>
+<h3 id="消息机制-Handler相关"><a href="#消息机制-Handler相关" class="headerlink" title="消息机制 Handler相关"></a>消息机制 Handler相关</h3><h5 id="Android消息机制了解多少？"><a href="#Android消息机制了解多少？" class="headerlink" title="Android消息机制了解多少？"></a>Android消息机制了解多少？</h5><p>Android是基于消息机制的，其核心是不停地从消息队列中取消息，保证App能正常运行，当这个取消息的循环结束那么App也就退出了。详细一点就是在ActivityThread中启动了一个Looper，它先保证该线程只会存在一个Looper和消息队列，即在prepareMainLooper方法中创建一个Looper该Looper中有一个消息队列（MessageQueue），并将该Looper放入当前线程的ThreadLocal中。然后获取当前线程的Handler，然后开始循环取消息并发送到Handler的dispatchMessage进行处理。</p>
+<h5 id="ThreadLocal是什么？"><a href="#ThreadLocal是什么？" class="headerlink" title="ThreadLocal是什么？"></a>ThreadLocal是什么？</h5><p>ThreadLocal是线程的本地变量，在Java的Thread中的ThreadLocal是由一个ThreadLocalMap实现，该Map底层是一个ThreadLocal数组，ThreadLocal是一个弱引用，该ThreadLocal类中有一个Object保存数据。</p>
+<h5 id="如何处理Handler的内存泄漏问题？"><a href="#如何处理Handler的内存泄漏问题？" class="headerlink" title="如何处理Handler的内存泄漏问题？"></a>如何处理Handler的内存泄漏问题？</h5><p>将Handler对上下文或者Activity的引用改为弱引用，将内部类改为静态内部类。对于延时消息，在界面关闭后调用removeCallbacksAndMessages方法移除消息。</p>
+<h5 id="怎么创建Message对象？"><a href="#怎么创建Message对象？" class="headerlink" title="怎么创建Message对象？"></a>怎么创建Message对象？</h5><p>使用Message.onbtain方法或者Handler.obtainMessage方法。</p>
+<h5 id="什么是同步屏障？有使用过吗？"><a href="#什么是同步屏障？有使用过吗？" class="headerlink" title="什么是同步屏障？有使用过吗？"></a>什么是同步屏障？有使用过吗？</h5><p>Handler同步屏障即阻断消息队列中的同步消息的执行，提供了消息队列的优先级操作的方式，开启了同步屏障后，只会执行异步消息。</p>
+<p>开启同步屏障需要通过反射。</p>
+<p>使用反射创建Handler的时候传入true或者使用message.setAynchronous(true); [eɪˈsɪŋkrənəs] 方法设为异步消息。</p>
+<h3 id="View相关"><a href="#View相关" class="headerlink" title="View相关"></a>View相关</h3><h5 id="Android事件分发流程？"><a href="#Android事件分发流程？" class="headerlink" title="Android事件分发流程？"></a>Android事件分发流程？</h5><p>当手指与屏幕交互时，Android系统会创建一个MotionEvent对象对交互事件进行封装，该MotionEvent在View之间传递的过程就是事件分发过程。</p>
+<p>事件由Window向下传递，从根ViewGroup开始，在ViewGroup中的dispatchTouchEvent分发中根据onInterceptTouchEvent方法的返回值对该事件进行拦截，如果拦截，则进入View的onTouchEvent方法，如果不拦截则遍历子元素，从最上层的子View开始，调用它们的dispatchTouchEvent方法，如果该View是ViewGroup则会重复此操作直到底层View，调用底层View的dispatchTouchEvent方法，该View的dispatchTouchEvent方法又会判断触摸事件、点击事件等，最后会调用该View的onTouchEvent方法。</p>
+<p>从底层View开始如果onTouchEvent方法不为true（即消费该事件），则会向上传递交给父View的onTouchEvent方法处理。</p>
+<h5 id="View的绘制流程？"><a href="#View的绘制流程？" class="headerlink" title="View的绘制流程？"></a>View的绘制流程？</h5><p>View的绘制是从ViewRoot的performTraversals方法开始的，此方法依次调用performMeasure、performLayout和performDraw三个方法，这三个方法会分别完成顶级View的measure、layout和draw流程。</p>
+<p>在performMeasure中会调用measure方法，在measure中又会调用onMeasure方法，在onMeasure中会对所有的子元素进行measure，此时测量流程就从父容器传递到子View中，如此反复最终整个View树都会测量完毕。布局和绘制流程与此类似。</p>
+<h3 id="性能优化相关"><a href="#性能优化相关" class="headerlink" title="性能优化相关"></a>性能优化相关</h3><h5 id="你在工作中有遇到过性能问题吗？是如何解决的？"><a href="#你在工作中有遇到过性能问题吗？是如何解决的？" class="headerlink" title="你在工作中有遇到过性能问题吗？是如何解决的？"></a>你在工作中有遇到过性能问题吗？是如何解决的？</h5><p>有，之前需要重写一个商品详情页面，我是用的是ConstraintLayout约束布局，但还是遇到了开启该页面较慢的情况，我经过测试发现是因为我约束布局的子元素太多导致进入页面慢，我的最开始的想法是通过替换布局来实现快速进入页面，但是如果打开这个页面是白屏然后突然变成全有数据的页面效果也没让我满意，所以我使用了ViewStub，将整个页面进行分块，分成多个ViewStub，进入页面时只将能看见的几个ViewStub转换为布局，其他的部分不进行转换，这大大提高了打开此页面的速度，也达到了我可以接受的水平。</p>
+<h3 id="第三方库相关"><a href="#第三方库相关" class="headerlink" title="第三方库相关"></a>第三方库相关</h3><h4 id="OkHttp"><a href="#OkHttp" class="headerlink" title="OkHttp"></a>OkHttp</h4><h5 id="okhttp怎么发送get请求？"><a href="#okhttp怎么发送get请求？" class="headerlink" title="okhttp怎么发送get请求？"></a>okhttp怎么发送get请求？</h5><p>首先通过Request.Builder对象创建一个Request，然后new一个OKHTTPClient对象，使用client的newCall方法传入request获取call对象，调用call对象的enqueue方法开始异步请求，enqueue方法需要一个CallBack对象，该对象是请求的成功与失败回调。</p>
+<h5 id="okhttp请求流程？"><a href="#okhttp请求流程？" class="headerlink" title="okhttp请求流程？"></a>okhttp请求流程？</h5><p>当调用newCall方法时会返回一个RealCall对象，它是真正发起请求的类。请求Dispatch类进行分发处理，该类有3个队列保存了正在运行的异步请求、准备运行的异步请求和正在运行的同步请求，同时还规定了最大请求数和主机的最大请求数，还有一个线程池。最终线程池的execute方法会开启拦截器链，通过拦截器来对请求分装、转换、请求等操作，最终在execute方法中进行回调。</p>
+<h5 id="应用拦截器和网络拦截器的区别？"><a href="#应用拦截器和网络拦截器的区别？" class="headerlink" title="应用拦截器和网络拦截器的区别？"></a>应用拦截器和网络拦截器的区别？</h5><p>如果把APP、OkHttp和服务器看做三个部分，那么从APP使用OkHttp取服务器读取数据然后返回的流程就是一次请求流程，在APP到OkHttp的过程中的拦截器是应用拦截器，OkHttp到服务器之间的拦截器为网路拦截器。</p>
+<p>应用拦截器不需要关心重定向和重连问题、总是调用一次，可以决定其他拦截器是否调用，可以重试和多次调用Chain.proceed。</p>
+<p>网络拦截器可以观察到所有网络传输的数据，可以操作重定向和重连。</p>
+<h5 id="常见的拦截器有哪些？顺序是什么？"><a href="#常见的拦截器有哪些？顺序是什么？" class="headerlink" title="常见的拦截器有哪些？顺序是什么？"></a>常见的拦截器有哪些？顺序是什么？</h5><p>自定义拦截器，它会最先调用；重试和重定向拦截器；请求、响应转换拦截器，封装请求和响应；缓存拦截器；连接拦截器；从服务器读取响应的拦截器。</p>
+<h5 id="说说okhttp的连接复用？"><a href="#说说okhttp的连接复用？" class="headerlink" title="说说okhttp的连接复用？"></a>说说okhttp的连接复用？</h5><p>okhttp定义了一个ConnectionPool连接池保存了连接对象，避免每次都需要重新建立连接。</p>
+<p>该连接池定义了socket的最大并发连接数和最大空闲存活时间、一个线程池和一个RealConnection双端队列，其内部不断的使用cleanup方法对RealConnection进行清理。</p>
+<p>RealConnection是真正使用socket进行网络连接的对象，该对象内部保存了SteamAllocation引用列表，作为该连接的引用计数，当次列表中的SteamAllocation对象被全部移除后，即没有在使用该连接，也意味着该RealConnection可以被clean。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E9%9D%A2%E8%AF%95/">面试</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/12/19/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E4%B8%8E%E7%BD%91%E7%BB%9C%E6%A1%86%E6%9E%B6/">
+                        <span class="hidden-mobile">网络编程与网络框架</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.start()
+    document.addEventListener('DOMContentLoaded', function() {
+      window.NProgress && window.NProgress.inc();
+    })
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>
